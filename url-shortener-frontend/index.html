@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>URL Shortener</title>
+  <link rel="stylesheet" href="/src/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>🔗 URL Shortener</h1>
+      <p>Quickly shorten and expand your URLs with ease!</p>
+    </header>
+    <main>
+      <div id="tabs">
+        <button id="shortenTab" class="tab active">Shorten URL</button>
+        <button id="expandTab" class="tab">Expand URL</button>
+      </div>
+      <div id="shortenSection" class="tab-content">
+        <div class="input-group">
+          <input type="text" id="longUrl" placeholder="Enter a URL to shorten" />
+          <button id="shortenBtn" class="btn-primary">Shorten</button>
+        </div>
+        <div id="shortenResult" class="result"></div>
+      </div>
+      <div id="expandSection" class="tab-content hidden">
+        <div class="input-group">
+          <input type="text" id="shortUrl" placeholder="Enter a shortened URL" />
+          <button id="expandBtn" class="btn-primary">Expand</button>
+        </div>
+        <div id="expandResult" class="result"></div>
+      </div>
+    </main>
+    <footer>
+      <p>© 2024 URL Shortener. Built with 💙 for the web.</p>
+    </footer>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

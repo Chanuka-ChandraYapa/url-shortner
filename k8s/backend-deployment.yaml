@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: url-shortener-backend-node
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: url-shortener-backend-node
+  template:
+    metadata:
+      labels:
+        app: url-shortener-backend-node
+    spec:
+      containers:
+        - name: url-shortener-backend-node
+          image: url-shortener-backend-node:latest # Use the local Docker image name
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: url-shortener-backend-node-service
+spec:
+  selector:
+    app: url-shortener-backend-node
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP

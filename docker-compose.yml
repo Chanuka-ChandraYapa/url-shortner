@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  backend:
+    build:
+      context: ./url-shortener-backend-node
+    ports:
+      - "8080:8080"
+    networks:
+      - url-shortener-net
+
+  frontend:
+    build:
+      context: ./url-shortener-frontend
+    ports:
+      - "5173:80"
+    networks:
+      - url-shortener-net
+
+networks:
+  url-shortener-net:

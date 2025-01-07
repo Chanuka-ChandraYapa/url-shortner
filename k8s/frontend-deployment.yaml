@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: url-shortener-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: url-shortener-frontend
+  template:
+    metadata:
+      labels:
+        app: url-shortener-frontend
+    spec:
+      containers:
+        - name: url-shortener-frontend
+          image: url-shortener-frontend:latest # Use the local Docker image name
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: url-shortener-frontend-service
+spec:
+  selector:
+    app: url-shortener-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
