@@ -89,3 +89,26 @@ document.getElementById("expandBtn").addEventListener("click", async () => {
       "Failed to connect to the server.";
   }
 });
+
+const themeToggle = document.getElementById("themeToggle");
+const body = document.body;
+
+// Check local storage for theme preference
+if (localStorage.getItem("theme") === "dark") {
+  body.classList.add("dark-mode");
+  themeToggle.textContent = "🌞";
+}
+
+// Toggle theme
+themeToggle.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+
+  // Update button text
+  if (body.classList.contains("dark-mode")) {
+    themeToggle.textContent = "🌞";
+    localStorage.setItem("theme", "dark");
+  } else {
+    themeToggle.textContent = "🌚";
+    localStorage.setItem("theme", "light");
+  }
+});
