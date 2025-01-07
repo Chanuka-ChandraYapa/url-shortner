@@ -6,7 +6,14 @@ const path = require("path");
 
 // Initialize the app and middleware
 const app = express();
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://url-shortner-fhlmt9rlt-chanuka-lakshans-projects.vercel.app",
+    ],
+  })
+);
 app.use(bodyParser.json());
 
 // Initialize the database

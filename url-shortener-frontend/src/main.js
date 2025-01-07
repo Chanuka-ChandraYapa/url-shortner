@@ -7,6 +7,9 @@ document.getElementById("expandTab").addEventListener("click", () => {
   showSection("expand");
 });
 
+// const backendUrl = "http://localhost:8080";
+const backendUrl = "https://url-shortner-87d0.onrender.com";
+
 function showSection(section) {
   const shortenSection = document.getElementById("shortenSection");
   const expandSection = document.getElementById("expandSection");
@@ -35,7 +38,7 @@ document.getElementById("shortenBtn").addEventListener("click", async () => {
   }
 
   try {
-    const response = await fetch("http://localhost:8080/shorten", {
+    const response = await fetch(`${backendUrl}/shorten`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +50,7 @@ document.getElementById("shortenBtn").addEventListener("click", async () => {
     if (data.short_url) {
       document.getElementById(
         "shortenResult"
-      ).innerHTML = `Shortened URL: <a href="http://localhost:8080/sh/${data.short_url}" target="_blank">http://localhost:8080/sh/${data.short_url}</a>`;
+      ).innerHTML = `Shortened URL: <a href="${backendUrl}/sh/${data.short_url}" target="_blank">${backendUrl}/sh/${data.short_url}</a>`;
     } else {
       document.getElementById("shortenResult").innerHTML =
         "Error shortening URL.";
@@ -70,9 +73,7 @@ document.getElementById("expandBtn").addEventListener("click", async () => {
   const shortUrlCode = shortUrl.split("/").pop();
 
   try {
-    const response = await fetch(
-      `http://localhost:8080/expand/${shortUrlCode}`
-    );
+    const response = await fetch(`${backendUrl}/expand/${shortUrlCode}`);
     const data = await response.json();
     if (data.long_url) {
       document.getElementById(
